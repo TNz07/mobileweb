@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKU Campus Guide | คู่มือแนะนำสถานที่ในมหาวิทยาลัยขอนแก่น</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <!-- Canvas สำหรับ Logo -->
+            <!-- จะวาดโลโก้/กราฟิก KKU ด้วย JavaScript ในไฟล์ JS หรือในแท็ก script -->
+            <canvas id="kku-logo" width="100" height="100"></canvas>
+
+            
+            <div class="title-animation-wrapper">
+                <h1>KKU Campus Guide</h1>
+                <!-- Animation Element: วงล้อ KKU -->
+                <div class="kku-wheel-animation"></div>
+                <p>คู่มือแนะนำสถานที่สำคัญในมหาวิทยาลัยขอนแก่น</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>ยินดีต้อนรับสู่ มหาวิทยาลัยขอนแก่น</h2>
+            <p>มหาวิทยาลัยขอนแก่น หรือ มข. เป็นมหาวิทยาลัยแห่งแรกในภาคตะวันออกเฉียงเหนือ มีพื้นที่กว้างขวางและมีสถานที่สำคัญหลายแห่งที่น่าสนใจและเป็นสัญลักษณ์ของชาว มข.</p>
+        </section>
+        
+
+        <!-- สถานที่ 1 -->
+        <section class="location-card" id="sala-tham">
+            <h3>1. ศาลเจ้าพ่อมอดินแดง</h3>
+            <p class="description">ศูนย์รวมจิตใจและความศรัทธาสูงสุดของนักศึกษาและบุคลากรในมหาวิทยาลัยขอนแก่น ผู้ที่มาสักการะส่วนมากประสบความสำเร็จโดยเฉพาะอย่างยิ่งในการเรียนและการสอบ</p>
+            <div class="image-gallery">
+                <figure>
+                    <img src="https://via.placeholder.com/400x300?text=ศาลาธรรม+รูป+1">
+                </figure>
+            </div>
+        </section>
+
+<!-- ส่วนฟอร์มแนะนำสถานที่ใหม่ -->
+        <section id="suggestion-form">
+            <h2>แนะนำสถานที่ใหม่</h2>
+            
+            <form action="#" method="post" id="suggestionForm">
+                <div class="form-group">
+                    <label for="locationName">ชื่อสถานที่ (ภาษาไทย):</label>
+                    <input type="text" id="locationName" name="locationName" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">รายละเอียดโดยย่อ:</label>
+                    <textarea id="details" name="details" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl1">URL ภาพประกอบ 1:</label>
+                    <input type="url" id="imageUrl1" name="imageUrl1" required><br>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </section>
+        <!-- สถานที่ 2, 3, 4 ... (ส่วนเนื้อหาเดิม) -->
+        <section class="location-card" id="library">...</section>
+        <section class="location-card" id="complex">...</section>
+        <section class="location-card" id="sithan-lake">...</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 KKU Campus Guide</p>
+        <div class="student-info">
+            <p>จัดทำโดย : นายสิทธิพรรธน์ ตันพิบูลย์</p>
+            <p>รหัสนักศึกษา : 663380027-3</p>
+        </div>
+    </footer>
+
+    <!-- ส่วนของ JavaScript สำหรับ Canvas และ Form -->
+    <script>
+        // ----------------------------------------------------
+        // 1. Canvas Logo (Drawing KKU Purple/Gold Circle)
+        // ----------------------------------------------------
+        const canvas = document.getElementById('kku-logo');
+        const ctx = canvas.getContext('2d');
+        const size = 100;
+        const center = size / 2;
+        const radius = 45;
+
+        // ฟังก์ชันวาดโลโก้ KKU แบบง่าย ๆ
+        function drawKKULogo() {
+            // วงกลมรอบนอก: สีม่วง
+            ctx.beginPath();
+            ctx.arc(center, center, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#682718';
+            ctx.fill();
+            
+            // วงกลมด้านใน: สีขาว
+            ctx.beginPath();
+            ctx.arc(center, center, radius * 0.8, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            // วงกลมกลาง: สีทอง
+            ctx.beginPath();
+            ctx.arc(center, center, radius * 0.6, 0, 2 * Math.PI);
+            ctx.fillStyle = '#FFAB00';
+            ctx.fill();
+
+            // ข้อความย่อในวงกลม
+            ctx.font = 'bold 24px Sarabun';
+            ctx.fillStyle = '#682718'; 
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('KKU', center, center);
+        }
+
+        drawKKULogo();
+
+
+
+
+        // ----------------------------------------------------
+        // 2. Form Submission Handling (สำหรับแสดงว่าฟอร์มทำงานได้)
+        // ----------------------------------------------------
+        document.getElementById('suggestionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // ป้องกันการ Submit จริง
+            
+            const name = document.getElementById('locationName').value;
+            
+            alert(`ขอบคุณสำหรับข้อมูลแนะนำสถานที่ "${name}"! ข้อมูลของคุณจะได้รับการพิจารณา`);
+            this.reset();
+        });
+
+    </script>
+</body>
+</html>
