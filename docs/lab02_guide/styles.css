@@ -38,20 +38,6 @@ header {
     position: relative; /* สำหรับจัดวาง animation element */
 }
 
-.hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(195, 66, 63, 0.6)), url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 1rem;
-            position: relative;
-        }
-
 header h1 {
     font-size: 2.5em;
     font-weight: 700;
@@ -62,6 +48,12 @@ header h1 span {
     animation: bounce 1.8s cubic-bezier(0.19, 1.0, 0.22, 1.0) infinite; 
     animation-delay: calc(var(--i, 0) * 0.35s); 
     will-change: transform;
+}
+
+footer {
+    background-color: #A73B24; 
+    color: white;
+    padding: 20px 0;
 }
 
 /* Canvas Styling */
@@ -79,17 +71,127 @@ header h1 span {
     }
 
 main {
-    max-width: 1200px;
+    max-width: 750px;
     margin: 20px auto;
     padding: 0 15px;
 }
 
-
 /*
  * ----------------------------------------------------
- * Animation Styling: Spinning Wheel Element
+ * การจัดวางรูปภาพ (Gallery) - FIXED for Horizontal Layout
  * ----------------------------------------------------
  */
+.image-gallery {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    
+    /* จัดสมมาตร: จัดเรียงให้อยู่กึ่งกลางหากมีเนื้อหาที่ไม่เต็มบรรทัด */
+    justify-content: space-evenly; /* ใช้ space-evenly เพื่อกระจาย 2 รูปให้เท่ากัน */
+    align-items: flex-start;
+    
+    /* เพิ่ม gap เพื่อให้มีช่องว่างระหว่างรูปภาพ */
+    gap: 15px; /* เพิ่มเป็น 15px เพื่อให้เห็นช่องว่างชัดเจน */
+    
+    width: 100%; 
+    margin: 20px 0 0 0; 
+}
+
+.image-gallery figure {
+    /* *** สำคัญมาก: บังคับขนาดให้เป็นครึ่งหนึ่งของพื้นที่ ลบด้วยช่องว่าง *** */
+    /* 50% - (gap / 2) = 50% - 7.5px */
+    flex: 0 0 calc(50% - 7.5px); 
+    
+    /* ทำให้ Flexbox ควบคุมขนาดโดยสมบูรณ์ */
+    width: auto; 
+    
+    background: #fff;
+    padding: 5px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    text-align: center;
+
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+/* รหัส IMG ไม่ต้องเปลี่ยน เพราะมันกินความกว้าง 100% ของ FIGURE */
+.image-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; 
+    display: block;
+    border-radius: 3px;
+}
+
+@media (max-width: 768px) { 
+
+    /* ************** แก้ไขตรงนี้ ************** */
+    /* 1. ยืนยันว่ามันเป็นแนวนอน แต่จัดกึ่งกลางแถว */
+    .image-gallery {
+        justify-content: center; /* ทำการจัดกึ่งกลางกลุ่มรูปภาพทั้งหมด */
+        gap: 10px;
+        /* *สำคัญ* ต้องแน่ใจว่าไม่มี flex-direction: column; ในโค้ดรวมทั้งหมด */
+    }
+    
+    .image-gallery figure {
+        /* 2. บังคับให้เรียง 2 รูปต่อแถวต่อไปบนมือถือ */
+        /* calc(50% - 5px) คือ 50% ลบด้วย half-gap */
+        flex: 0 0 calc(50% - 5px); 
+        
+        /* 3. ลบ max-width: 45%; เดิมออก เพื่อให้รูปภาพใช้พื้นที่ Responsive เต็มที่ */
+        max-width: none; 
+    }
+    /* *************************************** */
+
+    /* ... (ส่วนอื่นๆ ของ Media Query เช่น student-info ไม่ต้องแก้ไข) ... */
+}
+
+/* -----------------------------------------------------------------
+ * สไตล์สำหรับกรอบการ์ดของแต่ละสถานที่: .location-card
+ * (ตรงตามต้องการ: กรอบแยก, พื้นหลัง, มีเนื้อหาอยู่ภายใน)
+ * -----------------------------------------------------------------
+ */
+.location-card { 
+    /* Box Model: กำหนดพื้นที่ว่างภายในกรอบ */
+    padding: 30px; 
+    
+    /* Box Model: ระยะห่างระหว่างกรอบแต่ละอัน */
+    margin-top: 40px; 
+    
+    /* พื้นหลังภายในกรอบ */
+    background-color: #e4c8c1; 
+    
+    /* สร้างขอบ/มุมให้โค้งมน */
+    border-radius: 12px; 
+    
+    /* สร้างมิติให้กรอบด้วยเงา (Box-shadow) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+    
+    /* เคล็ดลับ: ใช้ transition เพื่อให้การโต้ตอบดูดีขึ้น (Optional) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* เพิ่มการโต้ตอบ: หากเมาส์ชี้ จะดูเหมือนกรอบลอยขึ้นมาเล็กน้อย */
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.location-card h3 {
+    /* ปรับแต่งหัวข้อ */
+    color: #A73B24;
+    border-bottom: 3px solid #A73B24; /* เส้นขีดใต้ชื่อสถานที่ */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.description {
+    /* ปรับการจัดวางคำอธิบาย */
+    margin-bottom: 25px;
+    text-align: distribute;
+    padding: 0 5px; /* เพิ่ม padding เล็กน้อย */
+}
 
 /*
  * ----------------------------------------------------
@@ -97,6 +199,8 @@ main {
  * ----------------------------------------------------
  */
 #suggestion-form {
+    margin-top: 40px;
+    margin-bottom: 100px;
     background-color: #ffe6cc; /* สีอ่อนๆ เพื่อดึงดูดความสนใจ */
     border: 1px solid #FFAB00;
     border-radius: 20px;
@@ -178,11 +282,6 @@ main {
     }
     
     /* ... (โค้ด responsive ส่วนอื่น ๆ ) ... */
-    
-    .image-gallery {
-        flex-direction: column;
-        gap: 15px;
-    }
 
     .student-info {
         flex-direction: column;
