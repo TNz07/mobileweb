@@ -46,19 +46,25 @@
         <section id="suggestion-form">
             <h2>แนะนำสถานที่ใหม่</h2>
             
-            <form action="#" method="post" id="suggestionForm">
+            <form action="https://api.web3forms.com/submit" method="post" id="suggestionForm">
+                
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                
                 <div class="form-group">
                     <label for="locationName">ชื่อสถานที่ (ภาษาไทย):</label>
-                    <input type="text" id="locationName" name="locationName" required>
+                    <input type="text" id="locationName" name="locationName" class="form-control" placeholder="กรุณาป้อนชื่อสถานที่" required>
                 </div>
                 <div class="form-group">
                     <label for="details">รายละเอียดโดยย่อ:</label>
-                    <textarea id="details" name="details" rows="4" required></textarea>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="บรรยายรายละเอียดเกี่ยวกับสถานที่" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="imageUrl1">URL ภาพประกอบ 1:</label>
-                    <input type="url" id="imageUrl1" name="imageUrl1" required><br>
+                    <input type="url" id="imageUrl1" name="imageUrl1" class="form-control" placeholder="https://example.com/image.jpg" required><br>
                 </div>
+
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
         </section>
@@ -87,27 +93,22 @@
         const center = size / 2;
         const radius = 45;
 
-        // ฟังก์ชันวาดโลโก้ KKU แบบง่าย ๆ
         function drawKKULogo() {
-            // วงกลมรอบนอก: สีม่วง
             ctx.beginPath();
             ctx.arc(center, center, radius, 0, 2 * Math.PI);
             ctx.fillStyle = '#682718';
             ctx.fill();
             
-            // วงกลมด้านใน: สีขาว
             ctx.beginPath();
             ctx.arc(center, center, radius * 0.8, 0, 2 * Math.PI);
             ctx.fillStyle = 'white';
             ctx.fill();
 
-            // วงกลมกลาง: สีทอง
             ctx.beginPath();
             ctx.arc(center, center, radius * 0.6, 0, 2 * Math.PI);
             ctx.fillStyle = '#FFAB00';
             ctx.fill();
 
-            // ข้อความย่อในวงกลม
             ctx.font = 'bold 24px Sarabun';
             ctx.fillStyle = '#682718'; 
             ctx.textAlign = 'center';
