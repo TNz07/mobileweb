@@ -37,7 +37,15 @@ function renderTable(elementId: string = "studentTableBody"): void {
     const first_name = (document.getElementById("first_name") as HTMLInputElement).value;
     const last_name = (document.getElementById("last_name") as HTMLInputElement).value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
-    const student: Student = { id, title_name, first_name, last_name, email, year, major };
+    const student: Student = { 
+        id, 
+        title_name,
+        first_name,
+        last_name,
+        email,
+        year, 
+        major 
+    };
     manager.addStudent(student);
     renderTable();
 };
