@@ -10,14 +10,11 @@
 <body>
     <header>
         <div class="header-content">
-            <!-- Canvas สำหรับ Logo -->
-            <!-- จะวาดโลโก้/กราฟิก KKU ด้วย JavaScript ในไฟล์ JS หรือในแท็ก script -->
             <canvas id="kku-logo" width="100" height="100"></canvas>
 
             
             <div class="title-animation-wrapper">
                 <h1>KKU Campus Guide</h1>
-                <!-- Animation Element: วงล้อ KKU -->
                 <div class="kku-wheel-animation"></div>
                 <p>คู่มือแนะนำสถานที่สำคัญในมหาวิทยาลัยขอนแก่น</p>
             </div>
@@ -30,8 +27,7 @@
             <p>มหาวิทยาลัยขอนแก่น หรือ มข. เป็นมหาวิทยาลัยแห่งแรกในภาคตะวันออกเฉียงเหนือ มีพื้นที่กว้างขวางและมีสถานที่สำคัญหลายแห่งที่น่าสนใจและเป็นสัญลักษณ์ของชาว มข.</p>
         </section>
         
-
-        <!-- สถานที่ 1 -->
+        <!-- สถานที่ -->
         <section class="location-card" id="shrine">
             <h3>1. ศาลเจ้าพ่อมอดินแดง</h3>
             <p class="description">ศูนย์รวมจิตใจและความศรัทธาสูงสุดของนักศึกษาและบุคลากรในมหาวิทยาลัยขอนแก่น ผู้ที่มาสักการะส่วนมากประสบความสำเร็จโดยเฉพาะอย่างยิ่งในการเรียนและการสอบ</p>
@@ -84,8 +80,7 @@
             </div>
         </section>
 
-
-<!-- ส่วนฟอร์มแนะนำสถานที่ใหม่ -->
+        <!-- แบบฟอร์ม -->
         <section id="suggestion-form">
             <h2>แนะนำสถานที่ใหม่</h2>
             
@@ -111,12 +106,9 @@
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
         </section>
-
-    <!-- ส่วนของ JavaScript สำหรับ Canvas และ Form -->
+        
+    <!-- อื่นๆ -->
     <script>
-        // ----------------------------------------------------
-        // 1. Canvas Logo (Drawing KKU Purple/Gold Circle)
-        // ----------------------------------------------------
         const canvas = document.getElementById('kku-logo');
         const ctx = canvas.getContext('2d');
         const size = 100;
@@ -149,13 +141,8 @@
         drawKKULogo();
 
 
-
-
-        // ----------------------------------------------------
-        // 2. Form Submission Handling (สำหรับแสดงว่าฟอร์มทำงานได้)
-        // ----------------------------------------------------
         document.getElementById('suggestionForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // ป้องกันการ Submit จริง
+            event.preventDefault();
             
             const name = document.getElementById('locationName').value;
             
