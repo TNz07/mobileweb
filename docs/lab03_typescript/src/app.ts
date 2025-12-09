@@ -47,6 +47,7 @@ function renderTable(elementId: string = "studentTableBody"): void {
         major 
     };
     manager.addStudent(student);
+    manager.saveToLocalStorage();
     renderTable();
 };
 
