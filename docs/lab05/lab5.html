@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Photo Gallery - สิทธิพรรธน์ ตันพิบูลย์</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root { --primary-color: #6366f1; }
+        body { background-color: #f4f7fe; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .app-card { border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .btn-download { background: linear-gradient(45deg, #69d9ec, #0686ee); border: none; padding: 12px 30px; border-radius: 50px; transition: 0.3s; }
+        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(99,102,241,0.4); color: white; }
+        .screenshot-frame { border-radius: 15px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+        .screenshot-frame:hover { transform: scale(2.03); }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row mb-5 text-center">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="fw-bold display-6">Lab 5: Photo Gallery App</h1>
+            <p class="text-muted">พัฒนาด้วย Ionic React & Capacitor</p>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-4">
+        <div class="card app-card p-4 h-100">
+            <h4 class="fw-bold mb-3 text-primary"><i class="bi bi-info-circle-fill me-2"></i>รายละเอียด App</h4>
+                <p>แอปพลิเคชันแกลเลอรีรูปภาพ ที่พัฒนาโดยใช้ Ionic Framework ร่วมกับ React.js สามารถถ่ายภาพด้วยกล้องมือถือ บันทึกลงในเครื่อง และแสดงผลในรูปแบบของ Grid ได้</p>
+                <hr>
+                <div class="mt-auto text-center py-3">
+                    <p class="small text-muted mb-3">Android Version</p>
+                <a href="./app-release.apk" class="btn btn-download text-white w-100 fw-bold shadow-sm" download>
+                    <i class="bi bi-android2 me-2"></i> Download APK
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-auto">
+            <div class="card app-card p-4">
+                <h4 class="fw-bold mb-4 text-primary"><i class="bi bi-images me-2"></i>ตัวอย่างหน้าจอ</h4>
+            <div class="d-flex flex-row g-3">
+                <div class="me-3" style="max-width: 200px;">
+                    <div class="screenshot-frame">
+                        <img src="p3.png" class="img-fluid" alt="Screen 1">
+                    </div>
+                    <p class="text-center mt-2 small fw-medium">Main Gallery</p>
+                </div>
+                <div style="max-width: 200px;">
+                    <div class="screenshot-frame">
+                        <img src="p4.png" class="img-fluid" alt="Screen 2">
+                    </div>
+                    <p class="text-center mt-2 small fw-medium">Camera Mode</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center pb-5 text-muted">
+    <small>ผู้จัดทำ : สิทธิพรรธน์ ตันพิบูลย์ 663380027-3 - College of Computing KKU</small>
+</footer>
+
+</body>
+</html>
